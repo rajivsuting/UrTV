@@ -1,21 +1,15 @@
 package com.urtv.main.entity;
 
 
+import com.urtv.main.enums.Genre;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.urtv.main.enums.Genre;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
 @Data
@@ -44,11 +38,9 @@ public class Movie {
 	private LocalDate releaseDate;
 	
 	private String country;
-	
-	private List<String> cast = new ArrayList<>();
-	
+
 	private String duration;
-	
-	
+	@ElementCollection
+	private List<String> casts=new ArrayList<>();
 
 }
