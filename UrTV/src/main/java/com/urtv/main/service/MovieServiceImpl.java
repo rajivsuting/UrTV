@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.urtv.main.entity.Movie;
@@ -20,6 +19,8 @@ import com.urtv.main.repository.MovieRepo;
 public class MovieServiceImpl implements MovieService {
 
 	private MovieRepo movieRepo;
+	
+	
 	@Autowired
 	public MovieServiceImpl(MovieRepo movieRepo) {
 		this.movieRepo = movieRepo;
@@ -27,6 +28,7 @@ public class MovieServiceImpl implements MovieService {
 
 	@Override
 	public Movie addMovies(AddMovieDto dto) {
+		
 		Movie movie=new Movie();
 		movie.setMovieName(dto.getMovieName());
 		movie.setMovieUrl(dto.getMovieUrl());
@@ -77,6 +79,7 @@ public class MovieServiceImpl implements MovieService {
 
 	@Override
 	public Page<Movie> getMoviesPaginated(int pageNo, int pageSize) {
+		
 		Pageable pageable= PageRequest.of(pageNo-1,pageSize);
 		return movieRepo.findAll(pageable);
 	}
