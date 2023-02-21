@@ -84,4 +84,11 @@ public class MovieServiceImpl implements MovieService {
 		return movieRepo.findAll(pageable);
 	}
 
+	@Override
+	public Movie deleteMovieById(Integer id) {
+		
+		return movieRepo.findById(id).orElseThrow(()-> new MovieException("No movie found with id "+id));
+
+	}
+
 }

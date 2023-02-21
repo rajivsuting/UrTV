@@ -19,4 +19,6 @@ public interface MovieService {
 	public List<Movie> getAllMoviesByGenre(Genre genre);
 
 	public Page<Movie> getMoviesPaginated(int pageNo, int pageSize);
+	
+	public Movie deleteMovieById(Integer id);
 }
